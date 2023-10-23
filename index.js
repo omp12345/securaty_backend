@@ -6,7 +6,9 @@ const { connection } = require('./db');
 const cors=require("cors")
 
 app.use(express.json())
-app.send("hello user You can use your task")
+app.get("/",(req,res)=>{
+    res.send("welcome to Blogpage")
+})
 const userRoutes = require('./routes/userRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const adminRoutes=require("./routes/adminRoutes")
