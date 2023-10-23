@@ -51,3 +51,12 @@ exports.loginUser = async (req, res) => {
     res.status(500).json({ message: 'Failed to authenticate' });
   }
 };
+exports.logoutuser=(req,res)=>{
+  const token = req.headers.authorization?.split(" ")[1]
+try {
+blacklist.push(token)
+   res.status(200).json({msg:"the user has been logged out"})
+} catch (error) {
+    res.status(400).json({err:error.message})
+} 
+}
