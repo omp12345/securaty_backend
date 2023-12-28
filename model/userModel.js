@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     enum:["frontend","backend","fullStack"],
     default: 'frontend', 
   },
-  age: {
+  phone_number: {
    type:Number,
    required:true
 
