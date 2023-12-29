@@ -9,6 +9,6 @@ router.post('/register', userController.registerUser);
 
 // Route for user login
 router.post('/login', userController.loginUser);
-router.get("/logout",userController.logoutuser)
+router.get("/logout",auth,userController.logoutuser)
 
 module.exports = router;
