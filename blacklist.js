@@ -1,4 +1,5 @@
-const blacklist=[]
+const blacklist = []
+
 module.exports={
-    blacklist
+   blacklist
 }

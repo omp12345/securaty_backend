@@ -5,17 +5,18 @@ const { blacklist } = require('../blacklist');
 
 
 // Controller for user registration
+
 exports.registerUser = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email: req.body.email });
+    const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser) {
       return res.status(201).json({ message: 'User already exists' });
     }
 
-    const { username, email, password, role ,age } = req.body;
+    const { username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({ username, email, password: hashedPassword, role,age });
+    const user = new User({ username,  password: hashedPassword });
     await user.save();
     res.status(201).json({ message: `${username} registration is successful`,registerdata:req.body });
   } catch (error) {
@@ -26,8 +27,8 @@ exports.registerUser = async (req, res) => {
 // Controller for user login
 exports.loginUser = async (req, res) => {
   try {
-    const {username, email, password } = req.body;
-    const user = await User.findOne({ email });
+    const {username, password } = req.body;
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(401).json({ message: 'Authentication failed' });
     }
@@ -35,9 +36,7 @@ exports.loginUser = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Authentication failed' });
     }
-    const token = jwt.sign({ userId: user._id,username: username,}, process.env.SECRET_KEY,{
-      expiresIn: '1h'
-    });
+    const token = jwt.sign({ userId: user._id,username: username}, process.env.SECRET_KEY,{expiresIn:"1h"});
     res.status(200).json({ token:token,msg:"Login Succersfully" });
    
   } catch (error) {
@@ -49,6 +48,7 @@ exports.loginUser = async (req, res) => {
 exports.logoutuser=(req,res)=>{
   const token = req.headers.authorization?.split(" ")[1]
 try {
+if(token)
 blacklist.push(token)
    res.status(200).json({msg:"the user has been logged out"})
 } catch (error) {
