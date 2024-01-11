@@ -44,7 +44,7 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-
+// controller for user logout
 exports.logoutuser=(req,res)=>{
   const token = req.headers.authorization?.split(" ")[1]
 try {
