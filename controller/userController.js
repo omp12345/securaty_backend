@@ -26,7 +26,7 @@ exports.registerUser = async (req, res) => {
 
 // Controller for user login
 exports.loginUser = async (req, res) => {
-  try {
+    try {
     const {username, password } = req.body;
     const user = await User.findOne({ username });
     if (!user) {
@@ -37,7 +37,7 @@ exports.loginUser = async (req, res) => {
       return res.status(401).json({ message: 'Authentication failed' });
     }
     const token = jwt.sign({ userId: user._id,username: username}, process.env.SECRET_KEY,{expiresIn:"1h"});
-    res.status(200).json({ token:token,msg:"Login Succersfully" });
+        res.status(200).json({ token:token,msg:"Login Succersfully" });
    
   } catch (error) {
     res.status(500).json({ message: 'Failed to authenticate' });

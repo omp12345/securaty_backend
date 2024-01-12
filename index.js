@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
 const { auth } = require('./middleware/auth.middleware.js');
 
 app.use('/api/user', userRoutes);
-app.use("/uploadfiles",auth,upload_FileRoute);
+app.use("/uploadfiles",upload_FileRoute);
 
 
 

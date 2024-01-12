@@ -11,7 +11,7 @@ const { auth } = require("../middleware/auth.middleware");
 
 const upload_FileRoute = express.Router();
 
-upload_FileRoute.get("/", getFiles);
+upload_FileRoute.get("/",auth, getFiles);
 // post the file using  file controller and auth middleware and singleupload middleware
 upload_FileRoute.post(
   "/upload",
@@ -21,8 +21,8 @@ upload_FileRoute.post(
   postFile
 );
 // delete by id 
-upload_FileRoute.delete("/delete/:id", deleteFile);
+upload_FileRoute.delete("/delete/:id",auth, deleteFile);
 // dounload the file using secret 6 digit code and download by using url
-upload_FileRoute.get("/download/:id/:code", downloadFile);
+upload_FileRoute.get("/download/:id/:code",auth, downloadFile);
 
 module.exports = { upload_FileRoute };
