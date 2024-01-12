@@ -16,6 +16,7 @@ const getFiles = async (req, res) => {
 
 // file add by user
 const postFile = async (req, res) => {
+  console.log(req.file)
   try {
     const upload = new file_upload({
      url: `https://perfect-pear-dibbler.cyclic.app/${req.file?.path}`,
