@@ -2,6 +2,7 @@ const multer=require("multer")
 const uuid=require("uuid").v4
 const storage = multer.diskStorage({
   destination(req, file, callback) {
+    console.log(req)
     callback(null, "uploads");
   },
 
