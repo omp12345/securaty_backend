@@ -18,7 +18,7 @@ const getFiles = async (req, res) => {
 const postFile = async (req, res) => {
   try {
     const upload = new file_upload({
-     url: `${process.env.URL}/${req.file?.path}`,
+     url: `http://localhost:8085/${req.file?.path}`,
       private_code: Math.floor(100000 + Math.random() * 900000),
       userId: req.body.userId,
       username: req.body.username,
