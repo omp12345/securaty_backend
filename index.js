@@ -6,7 +6,7 @@ const { connection } = require('./db');
 const cors=require("cors")
 
 app.use(express.json())
-app.get((req,res)=>{
+app.get("/",(req,res)=>{
     res.json("todo")
 })
 const userRoutes = require('./routes/userRoutes');
