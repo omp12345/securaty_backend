@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
-const { auth } = require('../middleware/auth.middleware.js');
-const { registerUser, loginUser, logoutuser } = require('../controller/userController');
-
+const userController = require('../controllers/userController');
+const { isAdmin } = require('../middleware/auth.middleware');
 
 // Route for user registration
-router.post('/register', registerUser);
+router.post('/register', userController.registerUser);
 
 // Route for user login
-router.post('/login',loginUser );
-router.get("/logout",logoutuser)
+router.post('/login', userController.loginUser);
+router.get("/logout",userController.logoutuser)
 
 module.exports = router;
