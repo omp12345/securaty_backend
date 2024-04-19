@@ -10,6 +10,15 @@ const taskSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  Date:{
+type:Number,
+required:true
+  },
+  color:{
+type:String,
+required:true
+
+  },
   
     userId:{
         type:String
