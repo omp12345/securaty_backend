@@ -26,15 +26,11 @@ required:true
 
   ,
   username:String,
-  role: {
-    type: String,
-    enum:["admin","user"],
-    default: 'user', 
-  },
+ 
  
   
 
-  
+
   
  
 });
