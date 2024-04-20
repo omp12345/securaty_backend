@@ -11,7 +11,7 @@ const taskSchema = new mongoose.Schema({
     default: false,
   },
   Date:{
-type:Number,
+type:String,
 required:true
   },
   color:{
